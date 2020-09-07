@@ -1,0 +1,89 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+  <section class="section">
+    <div class="container">
+      <div class="columns has-text-centered is-centered is-vcentered">
+        <div class="column">
+          <h1 class="is-size-1">
+            Everyone can be a <span class="has-text-logo-green">superhero</span>.
+          </h1>
+
+          <p>
+            The earth needs us more than ever before. With think.green you can save the world by changing your daily
+            life.
+          </p>
+        </div>
+        <div class="column is-vcentered">
+          <figure class="image iphone">
+            <img src="images/iphone.png" alt="Apple iPhone 11 with think.green app opened">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--
+  <section class="section">
+    <div class="container">
+      <div class="columns has-text-centered is-centered is-vcentered">
+        <div class="column is-half">
+          <h1 class="is-size-1">
+            Sign up now!
+          </h1>
+
+          <p>
+            Be the first to know about the release and get exclusive access to the beta version as soon as it is
+            available.
+          </p>
+
+          <form>
+            <div class="field">
+              <div class="control">
+                <input class="input has-text-centered" type="text" name="email-address"
+                       placeholder="alex.smith@gmail.com">
+              </div>
+            </div>
+
+            <div class="field">
+              <p class="control">
+                <button class="button has-background-logo-green has-text-weight-semibold">Get green</button>
+              </p>
+            </div>
+
+            <p class="is-size-7 has-text-grey-light">
+              Info: You can unsubscribe at any time. Your email address is only used to send the newsletter. For more
+              information see our <a href="privacy-policy">privacy policy</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!--
+  <form method="post" action="register-mail">
+    <label for="email"></label>
+    {% if success == false %}
+      <p class="error">
+        This email address is already registered.
+      </p>
+    {% elseif success %}
+      <p class="success">
+        Your email has been successfully registered. You will be informed about the latest updates.
+      </p>
+    {% endif %}
+    <input id="email" {% if success == false %}class="error-input"{% endif %} name="email" type="email"
+           placeholder="name@mail.com" value="{{ email }}" required>
+    <p class="privacy-information">
+      Yes, I want to subscribe to the newsletter which contains information and news about the "digger"
+      application.
+      <span>
+              You can find information on the in the agreement included ..., the saved data for the registration
+              and your right of withdrawal in our <a href="/privacy-policy">privacy policy</a>.
+            </span>
+    </p>
+    <button>Let's dig!</button>
+  </form>
+  -->
+{% endblock %}

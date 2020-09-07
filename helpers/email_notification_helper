@@ -1,0 +1,56 @@
+const path = require('path');
+const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+const Email = require('email-templates');
+
+class EmailNotificationHelper {
+  constructor() {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  }
+
+  async sendConfirmationMail(user, confirmationLink, type) {
+    const email = new Email({
+      views: {
+        options: {
+          extension: 'twig'
+        }
+      }
+    });
+
+    const renderedMail = await email.render(path.join(__dirname, '..', 'emails', 'confirmation'), {confirmationLink: confirmationLink}); //azure
+
+    const data = {
+      from: 'no-reply@digger.com',
+      to: user.email,
+      subject: 'Digger Confirmation',
+      html: renderedMail
+    };
+
+    let transporter;
+
+    switch (type) {
+      case 'sendmail':
+        transporter = nodemailer.createTransport({
+          sendmail: true,
+          newline: 'unix',
+          path: '/usr/sbin/sendmail'
+        });
+        break;
+      case 'gmail':
+        transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.GMAIL_USERNAME,
+            pass: process.env.GMAIL_PASSWORD
+          }
+        });
+        break;
+      case 'sendgrid':
+        return await sgMail.send(data);
+    }
+
+    return await transporter.sendMail(data);
+  }
+}
+
+module.exports = EmailNotificationHelper;
