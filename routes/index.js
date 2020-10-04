@@ -47,7 +47,7 @@ router.post('/register-mail', ipAddressMiddleware.fetchIpAddress, errorMiddlewar
   let confirmationLink = `${baseUrl}/confirm-email/${user.id}`;
 
   if (success) {
-    await emailNotificationHelper.sendConfirmationMail(user, confirmationLink, 'sendgrid');
+    await emailNotificationHelper.sendConfirmationMail(user, confirmationLink, 'mailjet');
   }
 
   res.render('index', {success: success, email: email});
