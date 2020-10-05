@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = `mongodb://127.0.0.1:27017/think-green-landingpage`
+const uri = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@127.0.0.1:27017/think-green-landingpage`
 
 class Database {
   constructor() {
@@ -9,6 +9,7 @@ class Database {
   }
 
   _connect() {
+    console.info(process.env);
     mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
