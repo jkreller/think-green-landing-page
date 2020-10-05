@@ -20,9 +20,9 @@ class EmailNotificationHelper {
     const renderedMail = await email.render(path.join(__dirname, '..', 'emails', 'confirmation'), {confirmationLink: confirmationLink}); //azure
 
     const data = {
-      from: 'no-reply@digger.com',
+      from: 'no-reply@think-green.app',
       to: user.email,
-      subject: 'Digger Confirmation',
+      subject: 'think.green Confirmation',
       html: renderedMail
     };
 
