@@ -29,17 +29,17 @@ p {
 }
 
 .has-text-logo-green {
-  color: #9CD16E;
+  color: #9cd16e;
 }
 
 .has-background-logo-green {
-  background-color: #9CD16E;
+  background-color: #9cd16e;
   color: white;
   border: none;
 }
 
 .navbar.is-transparent {
-   background-color: transparent;
+  background-color: transparent;
 }
 
 .navbar-brand.navbar-brand-center {

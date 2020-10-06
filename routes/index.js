@@ -9,61 +9,61 @@ const EmailNotificationHelper = require('../helpers/email_notification_helper');
 
 /* GET home page. */
 router.get('/', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-  res.render('index');
+    res.render('index');
 }));
 
 /* GET legal notice. */
 router.get('/legal-notice', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-  res.render('legal-notice');
+    res.render('legal-notice');
 }));
 
 /* GET privacy policy. */
 router.get('/privacy-policy', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-  res.render('privacy-policy');
+    res.render('privacy-policy');
 }));
 
 /* GET email notification. */
 router.post('/register-mail', ipAddressMiddleware.fetchIpAddress, errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-  const emailNotificationHelper = new EmailNotificationHelper();
-  const email = req.body.email;
-  const baseUrl = req.protocol + '://' + req.get('host');
+    const emailNotificationHelper = new EmailNotificationHelper();
+    const email = req.body.email;
+    const baseUrl = req.protocol + '://' + req.get('host');
 
-  let success = false;
-  let user = new User({
-    email: email,
-    registration_ip_address: req.ipAddress
-  });
+    let success = false;
+    let user = new User({
+        email: email,
+        registration_ip_address: req.ipAddress
+    });
 
-  try {
-    await user.save();
-    success = true;
-  } catch (e) {
-    //if email already exists
-    if (e.code !== 11000) {
-      throw e;
+    try {
+        await user.save();
+        success = true;
+    } catch (e) {
+        //if email already exists
+        if (e.code !== 11000) {
+            throw e;
+        }
     }
-  }
 
-  let confirmationLink = `${baseUrl}/confirm-email/${user.id}`;
+    let confirmationLink = `${baseUrl}/confirm-email/${user.id}`;
 
-  if (success) {
-    await emailNotificationHelper.sendConfirmationMail(user, confirmationLink, 'mailjet');
-  }
+    if (success) {
+        await emailNotificationHelper.sendConfirmationMailWithMailJet(user, confirmationLink);
+    }
 
-  res.render('index', {success: success, email: email});
+    res.render('index', {success: success, email: email});
 }));
 
 /* GET email confirmation. */
 router.get('/confirm-email/:userId', ipAddressMiddleware.fetchIpAddress, errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-  const user = await User.findById(req.params.userId);
+    const user = await User.findById(req.params.userId);
 
-  if (user && !user.confirmed_at) {
-    user.confirmed_at = Date.now();
-    user.confirmation_ip_address = req.ipAddress;
-    user.save();
-  }
+    if (user && !user.confirmed_at) {
+        user.confirmed_at = Date.now();
+        user.confirmation_ip_address = req.ipAddress;
+        user.save();
+    }
 
-  res.render('confirmation-success');
+    res.render('confirmation-success');
 }));
 
 module.exports = router;

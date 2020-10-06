@@ -1,66 +1,38 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
-const sgMail = require('@sendgrid/mail');
 const Email = require('email-templates');
 
 class EmailNotificationHelper {
-  constructor() {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  }
-
-  async sendConfirmationMail(user, confirmationLink, type) {
-    const email = new Email({
-      views: {
-        options: {
-          extension: 'twig'
-        }
-      }
-    });
-
-    const renderedMail = await email.render(path.join(__dirname, '..', 'emails', 'confirmation'), {confirmationLink: confirmationLink}); //azure
-
-    const data = {
-      from: 'no-reply@think-green.app',
-      to: user.email,
-      subject: 'think.green Confirmation',
-      html: renderedMail
-    };
-
-    let transporter;
-
-    switch (type) {
-      case 'sendmail':
-        transporter = nodemailer.createTransport({
-          sendmail: true,
-          newline: 'unix',
-          path: '/usr/sbin/sendmail'
+    async sendConfirmationMailWithMailJet(user, confirmationLink) {
+        const email = new Email({
+            views: {
+                options: {
+                    extension: 'twig'
+                }
+            }
         });
-        break;
-      case 'gmail':
-        transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: process.env.GMAIL_USERNAME,
-            pass: process.env.GMAIL_PASSWORD
-          }
+
+        const renderedMail = await email.render(path.join(__dirname, '..', 'emails', 'confirmation'), {confirmationLink: confirmationLink}); //azure
+
+        const data = {
+            from: 'no-reply@think-green.app',
+            to: user.email,
+            subject: 'think.green - Newsletter Confirmation',
+            html: renderedMail
+        };
+
+        let transporter = nodemailer.createTransport({
+            host: 'in-v3.mailjet.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.MAILJET_USERNAME,
+                pass: process.env.MAILJET_PASSWORD
+            }
         });
-        break;
-      case 'sendgrid':
-        return await sgMail.send(data);
-      case 'mailjet':
-        transporter = nodemailer.createTransport({
-          host: 'in-v3.mailjet.com',
-          port: 587,
-          secure: false,
-          auth: {
-            user: process.env.MAILJET_USERNAME,
-            pass: process.env.MAILJET_PASSWORD
-          }
-        });
+
+        return await transporter.sendMail(data);
     }
-
-    return await transporter.sendMail(data);
-  }
 }
 
 module.exports = EmailNotificationHelper;

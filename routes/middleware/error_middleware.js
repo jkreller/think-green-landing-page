@@ -1,9 +1,9 @@
 class ErrorMiddleware {
-  asyncErrorHandler(fn) {
-    return (req, res, next) => {
-      Promise.resolve(fn(req, res, next)).catch(next);
-    };
-  }
+    asyncErrorHandler(fn) {
+        return (req, res, next) => {
+            Promise.resolve(fn(req, res, next)).catch(next);
+        };
+    }
 }
 
 module.exports = new ErrorMiddleware();
