@@ -1,5 +1,46 @@
 <mjml>
+  <mj-head>
+    <mj-title>think.green Newsletter Confirmation</mj-title>
+    <mj-attributes>
+      <mj-all color="#707070" font-family="Arial, sans-serif"></mj-all>
+      <mj-text font-size="16px" color="#707070" font-family="Arial, sans-serif"></mj-text>
+    </mj-attributes>
+    <mj-style>
+      .has-text-logo-green {
+      color: #9CD16E;
+      }
+    </mj-style>
+  </mj-head>
   <mj-body>
-    <mj-section background-color="white"></mj-section>
+    <mj-section>
+      <mj-column>
+
+        <mj-text align="center" font-size="30px" font-family="Spartan">think.<span class="has-text-logo-green">green</span></mj-text>
+
+        <mj-text font-weight="bold" font-size="20px">
+          Newsletter Confirmation
+        </mj-text>
+
+        <mj-text>
+          Thank you for subscribing to the think.green newsletter. Please click the button below to confirm your registration.
+        </mj-text>
+        <mj-button font-weight="500" font-size="16px" font-family="Spartan" background-color="#9CD16E" color="#FFFFFF" href="#">
+          Confirm Registration
+        </mj-button>
+        <mj-text>
+          Only after you have clicked on the confirmation link will you be added to our mailing list.
+        </mj-text>
+        <mj-text>
+          If the button above does not work, please click the following link:
+        </mj-text>
+        <mj-text><a href="#">...</a></mj-text>
+        <mj-text>
+          If you do not want to receive the newsletter, you do not need to do anything else. You will not receive any further messages from us, your data will be completely deleted.
+        </mj-text>
+        <mj-text>Kind regards</mj-text>
+        <mj-text>Your think.green Team</mj-text>
+
+      </mj-column>
+    </mj-section>
   </mj-body>
 </mjml>
