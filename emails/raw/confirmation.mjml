@@ -3,12 +3,9 @@
     <mj-title>think.green Newsletter Confirmation</mj-title>
     <mj-attributes>
       <mj-all color="#707070" font-family="Arial, sans-serif"></mj-all>
-      <mj-text font-size="16px" color="#707070" font-family="Arial, sans-serif"></mj-text>
+      <mj-text font-size="16px" color="#707070" font-family="Arial, sans-serif" line-height="1.5" align="center"></mj-text>
     </mj-attributes>
     <mj-style>
-      .has-text-logo-green {
-      color: #9CD16E;
-      }
       a, a:visited {
       color: #707070;
       text-decoration: none;
@@ -19,16 +16,16 @@
     <mj-section>
       <mj-column>
 
-        <mj-text align="center" font-size="30px" font-family="Spartan">think.<span class="has-text-logo-green">green</span></mj-text>
+        <mj-image src="https://think-green.app/images/logo.svg" width="200px"></mj-image>
 
-        <mj-text font-weight="bold" font-size="20px">
+        <mj-text font-size="25px" padding-top="30px">
           Newsletter Confirmation
         </mj-text>
 
         <mj-text>
           Thank you for subscribing to the think.green newsletter. Please click the button below to confirm your registration.
         </mj-text>
-        <mj-button font-weight="500" font-size="20px" font-family="Spartan" background-color="#9CD16E" color="#FFFFFF" href="#">
+        <mj-button font-weight="500" font-size="16px" font-family="Spartan, sans-serif" background-color="#9CD16E" border-radius="5px" inner-padding="15px" color="#FFFFFF" href="#">
           Confirm Registration
         </mj-button>
         <mj-text>
@@ -38,7 +35,9 @@
           If you do not want to receive the newsletter, you do not need to do anything else. You will not receive any further messages from us, your data will be completely deleted.
         </mj-text>
         <mj-text>Kind regards</mj-text>
-        <mj-text>Your think.green Team</mj-text>
+        <mj-text font-style="italic" padding-bottom="30px">Your think.green Team</mj-text>
+
+        <mj-divider border-width="0.1px" border-color="#707070"></mj-divider>
 
         <mj-text align="center"><a href="https://think-green.app/legal-notice">Legal Notice</a> | <a href="https://think-green.app/privacy-policy">Privacy Policy</a></mj-text>
 
