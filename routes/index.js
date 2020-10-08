@@ -5,7 +5,7 @@ const User = require('../models/user');
 const errorMiddleware = require('./middleware/error_middleware');
 const ipAddressMiddleware = require('./middleware/ip_address_middleware');
 
-const EmailNotificationHelper = require('../helpers/email_notification_helper');
+const EmailHelper = require('../helpers/email_helper');
 
 /* GET home page. */
 router.get('/', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
@@ -24,7 +24,6 @@ router.get('/privacy-policy', errorMiddleware.asyncErrorHandler(async (req, res,
 
 /* GET email notification. */
 router.post('/register-mail', ipAddressMiddleware.fetchIpAddress, errorMiddleware.asyncErrorHandler(async (req, res, next) => {
-    const emailNotificationHelper = new EmailNotificationHelper();
     const email = req.body.email;
     const baseUrl = req.protocol + '://' + req.get('host');
 
@@ -47,7 +46,7 @@ router.post('/register-mail', ipAddressMiddleware.fetchIpAddress, errorMiddlewar
     let confirmationLink = `${baseUrl}/confirm-email/${user.id}`;
 
     if (success) {
-        await emailNotificationHelper.sendConfirmationMailWithMailJet(user, confirmationLink);
+        await EmailHelper.sendConfirmationMailWithMailJet(user, confirmationLink);
     }
 
     res.render('index', {success: success, email: email});

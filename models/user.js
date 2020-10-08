@@ -12,4 +12,19 @@ const schema = new Schema({
     versionKey: false
 });
 
+schema.statics.countConfirmed = function () {
+    return this.countDocuments({confirmed_at: {$ne: null}});
+}
+
+schema.statics.countUnconfirmed = function () {
+    return this.countDocuments({confirmed_at: null});
+}
+
+schema.statics.deleteUnconfirmedBeforeDate = function (date) {
+    return this
+        .where({confirmed_at: null})
+        .where({registered_at: {$lte: date.toISOString()}})
+        .deleteMany();
+}
+
 module.exports = mongoose.model('user', schema);

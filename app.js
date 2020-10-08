@@ -8,6 +8,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const database = require('./database');
+const cronjobs = require('./cronjobs');
 
 const app = express();
 
