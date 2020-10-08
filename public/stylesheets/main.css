@@ -55,3 +55,8 @@ p {
   margin: 1.5rem auto;
   width: 17rem;
 }
+
+#logo {
+  width: 15rem;
+  max-height: none;
+}
