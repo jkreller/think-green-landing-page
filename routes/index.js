@@ -12,6 +12,11 @@ router.get('/', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
     res.render('index');
 }));
 
+/* GET privacy policy. */
+router.get('/sources', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
+    res.render('sources');
+}));
+
 /* GET legal notice. */
 router.get('/legal-notice', errorMiddleware.asyncErrorHandler(async (req, res, next) => {
     res.render('legal-notice');

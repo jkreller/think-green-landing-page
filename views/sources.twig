@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% set sources = {
+  'Drive by bike!': {
+    'Greenhouse gas emissions by sector': 'https://www.eea.europa.eu/data-and-maps/daviz/ghg-emissions-by-aggregated-sector-5',
+    'Greenhouse gas emissions of transport sector by vehicle type': 'https://www.eea.europa.eu/data-and-maps/daviz/share-of-transport-ghg-emissions-2'
+  }
+} %}
+
+{% block main %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column sources">
+          <h1 class="is-size-1 has-text-centered">Sources</h1>
+          {% for sourceTitle, links in sources %}
+            <section>
+              <h2 class="is-size-2">{{ sourceTitle }}</h2>
+              {% for linkTitle, link in links %}
+                <p>
+                  {{ linkTitle }}:
+                  <a target="_blank" href="{{ link }}">{{ link }}</a>
+                </p>
+              {% endfor %}
+            </section>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

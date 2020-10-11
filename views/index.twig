@@ -16,7 +16,7 @@
         </div>
         <div class="column is-vcentered">
           <figure class="image iphone">
-            <img src="images/iphone.png" alt="Apple iPhone 11 with think.green app opened">
+            <img src="/images/iphone.png" alt="Apple iPhone 11 with think.green app opened">
           </figure>
         </div>
       </div>
@@ -28,15 +28,15 @@
       <div class="columns has-text-centered is-centered is-vcentered">
         <div class="column is-half">
           <h1 class="is-size-1">
-            Sign up now!
+            Sign up now! Saving the planet is free!
           </h1>
 
           <p>
-            Be the first to know about the release and get exclusive access to the beta version as soon as it is
-            available.
+            Get more information, be the first to know about the release and get exclusive access to the beta version as
+            soon as it is available - subscribe to our newsletter!
           </p>
 
-          <form method="post" action="register-mail">
+          <form method="post" action="/register-mail">
             <div class="field">
               <div class="control">
                 <input class="input has-text-centered {% if success == false %}is-danger{% endif %}" type="email"
@@ -65,30 +65,4 @@
       </div>
     </div>
   </section>
-
-  <!--
-  <form method="post" action="register-mail">
-    <label for="email"></label>
-    {% if success == false %}
-      <p class="error">
-        This email address is already registered.
-      </p>
-    {% elseif success %}
-      <p class="success">
-        Your email has been successfully registered. You will be informed about the latest updates.
-      </p>
-    {% endif %}
-    <input id="email" {% if success == false %}class="error-input"{% endif %} name="email" type="email"
-           placeholder="name@mail.com" value="{{ email }}" required>
-    <p class="privacy-information">
-      Yes, I want to subscribe to the newsletter which contains information and news about the "digger"
-      application.
-      <span>
-              You can find information on the in the agreement included ..., the saved data for the registration
-              and your right of withdrawal in our <a href="/privacy-policy">privacy policy</a>.
-            </span>
-    </p>
-    <button>Let's dig!</button>
-  </form>
-  -->
 {% endblock %}
