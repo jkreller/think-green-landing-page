@@ -26,7 +26,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(compression());
 app.use(minify({cache: path.join(__dirname, 'minify-cache')}));
-app.use(express.static(path.join(__dirname, 'public'), {maxAge: 31557600}));
+// Set maxAge for cache to one year
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: 31536000000}));
 
 app.use('/', indexRouter);
 
