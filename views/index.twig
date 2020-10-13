@@ -21,7 +21,8 @@
             <picture>
               <source srcset="/images/iphone.webp" type="image/webp">
               <source srcset="/images/iphone.png" type="image/png">
-              <img src="/images/iphone.png" alt="Apple iPhone 11 with think.green app opened">
+              <img src="/images/iphone.png" width="300" height="614"
+                   alt="think.green app running on an Apple iPhone 11">
             </picture>
           </figure>
         </div>
@@ -33,20 +34,19 @@
     <div class="container">
       <div class="columns has-text-centered is-centered is-vcentered">
         <div class="column is-half">
-          <h1 class="is-size-1">
-            Sign up now! Saving the planet is free!
-          </h1>
-
-          <p>
-            Get more information, be the first to know about the release and get exclusive access to the beta version as
-            soon as it is available - subscribe to our newsletter!
-          </p>
-
           <form method="post" action="/register-mail">
+            <h1 class="is-size-1">
+              <label for="email">Sign up now! Saving the planet is free!</label>
+            </h1>
+
+            <p>
+              Get more information, be the first to know about the release and get exclusive access to the beta version
+              as soon as it is available - subscribe to our newsletter!
+            </p>
             <div class="field">
               <div class="control">
-                <input class="input has-text-centered {% if success == false %}is-danger{% endif %}" type="email"
-                       name="email" placeholder="alex.smith@gmail.com">
+                <input id="email" class="input has-text-centered {% if success == false %}is-danger{% endif %}"
+                       type="email" name="email" placeholder="alex.smith@gmail.com">
               </div>
               {% if success == false %}
                 <p class="help is-danger">This email address is already registered</p>
