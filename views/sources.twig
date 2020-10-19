@@ -4,7 +4,10 @@
   'Drive by bike!': {
     'Greenhouse gas emissions by sector': 'https://www.eea.europa.eu/data-and-maps/daviz/ghg-emissions-by-aggregated-sector-5',
     'Greenhouse gas emissions of transport sector by vehicle type': 'https://www.eea.europa.eu/data-and-maps/daviz/share-of-transport-ghg-emissions-2'
-  }
+  },
+  'Close the tap!': [
+    'https://www.intelligenthanddryers.com/blog/why-is-saving-water-important'
+  ]
 } %}
 
 {% block title %}Sources{% endblock %}
@@ -20,7 +23,9 @@
               <h2 class="is-size-2">{{ sourceTitle }}</h2>
               {% for linkTitle, link in links %}
                 <p>
-                  {{ linkTitle }}:
+                  {% if linkTitle is not odd and linkTitle is not even %}
+                    {{ linkTitle }}:
+                  {% endif %}
                   <a target="_blank" href="{{ link }}">{{ link }}</a>
                 </p>
               {% endfor %}
