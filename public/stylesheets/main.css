@@ -29,6 +29,10 @@ p {
   margin-bottom: 2rem;
 }
 
+blockquote {
+  font-style: italic;
+}
+
 .has-logo-font {
   font-family: Spartan, sans-serif;
 }
@@ -51,6 +55,13 @@ p {
   -moz-flex-direction: row-reverse;
   -webkit-flex-direction: row-reverse;
   flex-direction: row-reverse;
+}
+
+.quote-symbol {
+  display: block;
+  font-size: 10rem;
+  height: 5rem;
+  line-height: 10rem;
 }
 
 .navbar.is-transparent {
