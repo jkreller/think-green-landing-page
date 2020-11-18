@@ -3,10 +3,10 @@
 {% block title %}Save the planet in your daily life{% endblock %}
 
 {% block main %}
-  <section class="section">
+  <section class="section mb-7 overflow-hidden">
     <div class="container">
-      <div class="columns has-text-centered is-centered is-vcentered">
-        <div class="column">
+      <div class="columns">
+        <div class="column is-half is-offset-half mb-6 has-text-centered has-text-right has-text-centered-mobile">
           <h1 class="is-size-1">
             Everyone can be a <span class="has-text-logo-green">superhero</span>.
           </h1>
@@ -15,16 +15,15 @@
             The earth needs us more than ever before. With think.green you can save the world by changing your daily
             life.
           </p>
+
+          <a href="#signup" class="button has-background-logo-green has-text-weight-semibold">Sign up for free</a>
         </div>
-        <div class="column is-vcentered">
-          <figure class="image iphone">
-            <picture>
-              <source srcset="/images/iphone.webp" type="image/webp">
-              <source srcset="/images/iphone.png" type="image/png">
-              <img src="/images/iphone.png" width="300" height="614"
-                   alt="think.green app running on an Apple iPhone 11">
-            </picture>
-          </figure>
+        <div class="iphone-mockup-container">
+          {% include 'partials/optimized-image.twig' with {
+            name: 'iphone-mockup',
+            classes: 'iphone-mockup',
+            altText: 'iPhone 12 mockup with think.green app running',
+          } %}
         </div>
       </div>
     </div>
@@ -34,9 +33,66 @@
     <div class="container">
       <div class="columns has-text-centered is-centered is-vcentered">
         <div class="column is-half">
+          <h1 class="is-size-1">About.</h1>
+
+          <p>
+            think.green is an app which quickly gives you information about what you can do to contribute in the fight
+            against climate change and how you can live a greener, more sustainable life.
+          </p>
+
+          <p>
+            Some billion small actions make up a huge one.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% include 'partials/iphone-explanation.twig' with {
+    image: {
+      name: 'iphone-thought',
+      altText: 'think.green app running on an Apple iPhone 12',
+    },
+    text: {
+      headline: 'Do that!',
+      content: 'Small actions can make a big impact but are also easy to do. That’s why think.green gives you a simple thought.'
+    }
+  } %}
+
+  {% include 'partials/iphone-explanation.twig' with {
+    image: {
+      name: 'iphone-what',
+      altText: 'think.green app running on an Apple iPhone 12',
+    },
+    text: {
+      headline: 'What exactly?',
+      content: 'To know exactly what you need to do, think.green also provides you with a small explanation.'
+    },
+    isReversedRow: true,
+    hasNegativeOffsetTop: true
+  } %}
+
+  {% include 'partials/iphone-explanation.twig' with {
+    image: {
+      name: 'iphone-why',
+      altText: 'think.green app running on an Apple iPhone 12',
+    },
+    text: {
+      headline: 'But why?',
+      content: 'Probably you’ll think: „What on earth could that be useful for?“ That’s why you also get an explanation
+      why you should take that action. If you are interested you can also read further.'
+    },
+    hasNegativeOffsetTop: true
+  } %}
+
+  <section id="signup" class="section">
+    <div class="container">
+      <div class="columns has-text-centered is-centered is-vcentered">
+        <div class="column is-half">
           <form method="post" action="/register-mail">
             <h1 class="is-size-1">
-              <label for="email">Sign up now! Saving the planet is free!</label>
+              <label for="email">Sign up now. Saving the planet is free.</label>
             </h1>
 
             <p>

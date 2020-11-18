@@ -5,7 +5,7 @@
 }
 
 body {
-  max-width: 900px;
+  max-width: 750px;
   margin: auto;
   color: #707070;
   font-family: Arial, sans-serif;
@@ -14,6 +14,10 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
+}
+
+a.button {
+  text-decoration: none;
 }
 
 h1 {
@@ -39,6 +43,16 @@ p {
   border: none;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.has-reversed-row-flex-direction {
+  -moz-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
 .navbar.is-transparent {
   background-color: transparent;
 }
@@ -52,9 +66,21 @@ p {
   color: inherit;
 }
 
-.iphone {
-  margin: 1.5rem auto;
+.iphone-mockup-container {
+  height: 26rem; /* Approximately height of .iphone-mockup */
+}
+
+.iphone-mockup {
+  width: 47rem;
+  /* Center oversized image for mobile devices */
+  position: absolute;
+  left: 50%;
+  margin-left: -21rem; /* A bit less than half of the image width */
+}
+
+.iphone-front {
   width: 17rem;
+  filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.2));
 }
 
 .sources p {
@@ -64,4 +90,36 @@ p {
 #logo {
   width: 15rem;
   max-height: none;
+}
+
+/* Everything which is not mobile */
+@media screen and (min-width: 769px) {
+  .is-pulled-left-no-mobile {
+    float: left;
+  }
+
+  .is-pulled-right-no-mobile {
+    float: right;
+  }
+
+  .has-negative-offset-top-no-mobile {
+    margin-top: -12rem;
+  }
+
+  .is-pulled-right-by-margin-no-mobile {
+    margin-left: auto;
+  }
+
+  .iphone-mockup {
+    left: -7.5rem;
+    margin-left: 0;
+  }
+}
+
+/* Mobile only */
+@media screen and (max-width: 768px) {
+  .is-centered-by-margin-mobile {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

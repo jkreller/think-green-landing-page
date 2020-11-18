@@ -1,0 +1,26 @@
+<section class="section {% if hasNegativeOffsetTop %}has-negative-offset-top-no-mobile{% endif %}">
+  <div class="container">
+    <div
+        class="columns has-text-centered-mobile is-centered is-vcentered {% if isReversedRow %}has-reversed-row-flex-direction{% endif %}">
+      <div class="column mb-5 is-flex">
+        {% include 'partials/optimized-image.twig' with {
+          name: image.name,
+          classes: 'iphone-front is-centered-by-margin-mobile' ~ (isReversedRow ? ' is-pulled-right-by-margin-no-mobile' : ''),
+          altText: image.altText,
+          width: 300,
+          height: 614
+        } %}
+      </div>
+
+      <div class="column">
+        <h2 class="is-size-5 has-text-weight-bold has-text-logo-green">
+          {{ text.headline }}
+        </h2>
+
+        <p class="has-text-weight-bold">
+          {{ text.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
