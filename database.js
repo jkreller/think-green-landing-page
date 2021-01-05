@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:27017/think-green-landingpage?authSource=admin`
+const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/think-green-landingpage?${process.env.MONGODB_URL_PARAMETERS}`
 
 class Database {
     constructor() {
